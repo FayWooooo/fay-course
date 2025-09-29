@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>課程結帳</title>
+  <link rel="icon" href="logo.ico">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- Supabase -->
+  <script src="https://unpkg.com/@supabase/supabase-js"></script>
+  <script src="supabase-config.js"></script>
+  <script defer src="checkout.js"></script>
+
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      margin: 0;
+      background: #f7f8fa;
+    }
+    .checkout-wrapper {
+      max-width: 1000px;
+      margin: 3rem auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+      padding: 0 1rem;
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      padding: 1.5rem;
+    }
+    h2 {
+      margin-top: 0;
+    }
+    .course-info img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    .order-summary {
+      border-top: 1px solid #eee;
+      margin-top: 1rem;
+      padding-top: 1rem;
+    }
+    .summary-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+    .summary-total {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #d32f2f;
+    }
+    .payment-methods {
+      margin-top: 1.5rem;
+    }
+    .method {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0.6rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 0.6rem;
+      cursor: pointer;
+      transition: border 0.2s;
+    }
+    .method:hover {
+      border-color: #4a90e2;
+    }
+    .method input {
+      transform: scale(1.2);
+    }
+    .btn-pay {
+      margin-top: 1.5rem;
+      width: 100%;
+      padding: 0.9rem;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      background: linear-gradient(135deg, #4a90e2, #9013fe);
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+    .btn-pay:hover {
+      box-shadow: 0 0 12px rgba(144, 19, 254, 0.4);
+      transform: translateY(-2px);
+    }
+    @media (max-width: 768px) {
+      .checkout-wrapper {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="checkout-wrapper">
+    <!-- 課程資訊 -->
+    <div class="card course-info">
+      <img id="courseCover" src="" alt="課程封面">
+      <h2 id="courseTitle">載入中...</h2>
+      <p id="courseDesc"></p>
+      <div class="order-summary">
+        <div class="summary-item">
+          <span>課程價格</span>
+          <span id="coursePrice">--</span>
+        </div>
+        <div class="summary-item summary-total">
+          <span>總計</span>
+          <span id="courseTotal">--</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 付款資訊 -->
+    <div class="card">
+      <h2><i class="fa-solid fa-credit-card"></i> 付款方式</h2>
+      <div class="payment-methods">
+        <label class="method">
+          <input type="radio" name="payment" value="card" checked>
+          <i class="fa-solid fa-credit-card"></i> 信用卡
+        </label>
+        <label class="method">
+          <input type="radio" name="payment" value="atm">
+          <i class="fa-solid fa-building-columns"></i> ATM 轉帳
+        </label>
+        <label class="method">
+          <input type="radio" name="payment" value="linepay">
+          <i class="fa-brands fa-line"></i> LINE Pay
+        </label>
+      </div>
+      <button id="payBtn" class="btn-pay">
+        確認付款
+      </button>
+    </div>
+  </div>
+</body>
+</html>

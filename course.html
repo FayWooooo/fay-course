@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>課程內容</title>
+  <script src="https://unpkg.com/@supabase/supabase-js"></script>
+  <link rel="icon" href="logo.ico">
+  <script defer src="supabase-config.js"></script>
+  <script defer src="course.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f7f9fc;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    h1 { margin-bottom: 1rem; }
+    .cover {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+    }
+    .description {
+      margin: 1.5rem 0;
+      line-height: 1.6;
+    }
+    .price {
+      font-weight: bold;
+      font-size: 20px;
+      color: #c33;
+      margin-bottom: 2rem;
+    }
+    .section-title {
+      margin: 2rem 0 1rem;
+      font-size: 22px;
+      border-left: 4px solid #007bff;
+      padding-left: 10px;
+    }
+    .accordion {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+    .accordion-header {
+      background: #f1f4f9;
+      padding: 14px 18px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      transition: background 0.3s;
+    }
+    .accordion-header:hover {
+      background: #e4ebf7;
+    }
+    .accordion-header i {
+      transition: transform 0.3s;
+    }
+    .accordion-header.active i {
+      transform: rotate(90deg);
+    }
+    .accordion-content {
+      display: none;
+      background: #fff;
+    }
+    .lesson {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      border-bottom: 1px solid #eee;
+    }
+    .lesson:last-child { border-bottom: none; }
+    .lesson-title { font-weight: bold; }
+    .lesson-meta { font-size: 14px; color: #666; margin-top: 4px; }
+    .badge {
+      font-size: 12px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      margin-left: 8px;
+    }
+    .badge.free { background: #28a745; color: #fff; }
+    .badge.paid { background: #c33; color: #fff; }
+    .total-time {
+      margin-top: 1rem;
+      font-size: 16px;
+      color: #444;
+    }
+    .back-btn {
+      margin-top: 2rem;
+      display: inline-block;
+      padding: 10px 20px;
+      background: #007bff;
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .back-btn:hover { background: #0056b3; }
+    
+  </style>
+</head>
+<div id="page-loader"></div>
+<body>
+  <div class="container" id="courseContainer">載入中...</div>
+  <div id="purchaseSection"></div>
+  <!-- 影片播放小視窗 -->
+<div id="videoModal" class="modal hidden">
+  <div class="modal-content">
+    <span id="closeModal" class="close">&times;</span>
+    <h2 id="videoTitle"></h2>
+    <div id="videoWrapper"></div>
+    <div class="custom-controls">
+      <button id="playPause">▶</button>
+      <input type="range" id="seekBar" value="0">
+      <button id="mute">🔇</button>
+      <button id="fullscreen">⛶</button>
+    </div>
+  </div>
+</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</body>
+</html>

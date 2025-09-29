@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="logo.ico">
+  <title>後台管理</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+  <!-- Supabase -->
+  <script src="https://unpkg.com/@supabase/supabase-js"></script>
+  <script src="supabase-config.js"></script>
+  <script defer src="admin.js"></script>
+</head>
+<div id="page-loader"></div>
+
+<!-- 登入畫面 -->
+<div id="loginScreen" class="login-screen">
+  <div class="login-card">
+    <div class="login-icon"><i class="fa-solid fa-lock"></i></div>
+    <h2>管理員登入</h2>
+    <p>只支援 Google 登入</p>
+    <button id="loginBtn" class="google-btn">
+      <i class="fa-brands fa-google"></i> 使用 Google 登入
+    </button>
+    <p class="system-name">FayCourse 管理系統 v1.0</p>
+  </div>
+</div>
+
+<body class="admin-body">
+  <!-- 側邊欄 -->
+  <aside class="sidebar">
+    <div class="logo">Fay-Course 後台 v1.0</div>
+    <nav>
+        <a href="#" class="active"><i class="fa-solid fa-book"></i> 課程管理</a>
+        <a href="#"><i class="fa-solid fa-users"></i> 學員管理</a>
+        <a href="#"><i class="fa-solid fa-chart-line"></i> 數據分析</a>
+        <a href="#"><i class="fa-solid fa-gear"></i> 系統設定</a>
+      </nav>
+      
+    <div class="sidebar-footer">
+      <span id="userInfo"></span>
+      <button id="loginBtn" class="btn">Google 登入</button>
+      <button id="logoutBtn" class="btn hidden">登出</button>
+    </div>
+  </aside>
+
+  <!-- 主內容 -->
+  <main class="main-panel">
+    <header style="background-color: #2c3e50;border-radius: 15px;">
+      <h1 style="color: white;">課程管理後台</h1>
+    </header>
+
+    <section id="adminPanel" class="hidden">
+      <!-- 新增課程 -->
+      <div class="card">
+        <h2>新增課程</h2>
+        <div class="form-group">
+          <label>課程標題</label>
+          <input id="title" placeholder="輸入課程名稱">
+        </div>
+        <div class="form-group">
+          <label>封面圖片 (限上傳4:3的圖片)</label>
+          <input id="coverFile" type="file" accept="image/*">
+        </div>
+        <div class="form-group">
+          <label>課程簡介</label>
+          <textarea id="desc" placeholder="輸入課程簡介"></textarea>
+        </div>
+        <div class="form-group">
+          <label>價格 (NT$)</label>
+          <input id="price" type="number" placeholder="輸入價格">
+        </div>
+      </div>
+      <section id="studentPanel" class="hidden">
+        <div class="card">
+          <h2>學員管理</h2>
+          <p>這裡可以查看學員名單、購買紀錄，或停權帳號。</p>
+        </div>
+      </section>
+      
+      <section id="analyticsPanel" class="hidden">
+        <div class="card">
+          <h2>數據分析</h2>
+          <p>這裡會顯示註冊人數、購買次數、熱門課程統計。</p>
+        </div>
+      </section>
+      
+      <section id="settingsPanel" class="hidden">
+        <div class="card">
+          <h2>系統設定</h2>
+          <p>這裡可以設定管理員帳號、調整平台參數。</p>
+        </div>
+      </section>
+      
+      <!-- 章節與單元 -->
+      <div class="card">
+        <h2>課程章節與單元</h2>
+        <div id="chaptersContainer"></div>
+        <button type="button" id="addChapterBtn" class="btn">➕ 新增章節</button>
+      </div>
+
+      <!-- 新增課程按鈕 -->
+      <div class="card">
+        <button id="addBtn" class="btn primary">➕ 新增課程</button>
+      </div>
+
+      <!-- 課程清單 -->
+      <div class="card">
+        <h2>課程清單</h2>
+        <table class="course-table">
+          <thead>
+            <tr>
+              <th>課程ID</th>
+              <th>標題</th>
+              <th>價格</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="adminCourseList"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

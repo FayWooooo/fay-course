@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 課程平台</title>
+  <link rel="icon" type="image/x-icon" href="logo.ico">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Supabase SDK -->
+  <script src="https://unpkg.com/@supabase/supabase-js"></script>
+  <script src="supabase-config.js"></script>
+  <script defer src="index.js"></script>
+</head>
+<body>
+    <div id="page-loader"></div>
+
+  <!-- 導覽列 -->
+  <header>
+    <div><b>FayWooooo 課程</b></div>
+    <header class="navbar">
+        <nav>
+          <a href="#courses">課程</a>
+          <a href="#reviews">評論</a>
+          <a href="#plans">方案</a>
+          <span id="userInfo"></span>
+          <button id="loginBtn" class="btn">登入</button>
+          <button id="logoutBtn" class="btn hidden">登出</button>
+        </nav>
+      </header>
+      
+  </header>
+
+  <!-- Hero 區 -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>學習 AI 與程式設計，提升你的專業競爭力</h1>
+      <p>由業界專家打造，從零開始到實務應用。</p>
+      <a href="#courses"><button class="btn">瀏覽課程</button></a>
+    </div>
+  </section>
+  
+  <!-- 熱門課程 -->
+  <section id="courses" style="max-width: 1260px;">
+    <h2><i class="icon-fire"></i> 熱門課程</h2>
+    <div id="courseList" class="courses">載入中...</div>
+  </section>
+  
+
+  <!-- 學員評論 -->
+  <section id="reviews">
+    <h2><i class="icon-comment"></i> 學員評論</h2>
+    <div class="reviews">
+      <div class="review">
+        <p>「課程淺顯易懂，實作很多，馬上能應用！」</p>
+        <span>- 洪坤歆</span>
+      </div>
+      <div class="review">
+        <p>「老師講解超清楚，幫助我找到第一份 AI 工程師工作。」</p>
+        <span>- 黃浚澍</span>
+      </div>
+      <div class="review">
+        <p>「物超所值！比國外線上課程還扎實。」</p>
+        <span>- 李凱樺</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 會員方案 -->
+  <section id="plans">
+    <h2><i class="icon-diamond"></i> 會員方案</h2>
+    <div class="plans">
+      <div class="plan">
+        <h3>Free</h3>
+        <p>有限課程體驗</p>
+        <p class="price">NT$ 0</p>
+        <button class="btn">立即加入</button>
+      </div>
+      <div class="plan">
+        <h3>月費方案</h3>
+        <p>全部課程無限學習</p>
+        <p class="price">NT$ 299/月</p>
+        <button class="btn">開始學習</button>
+      </div>
+      <div class="plan">
+        <h3>VIP</h3>
+        <p>專屬助教指導 + 課程證書</p>
+        <p class="price">NT$ 999/月</p>
+        <button class="btn">成為 VIP</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 AI 課程平台 | 打造你的未來技能</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+    "rewrites": [
+      {
+        "source": "/courses/:id",
+        "destination": "/course.html"
+      }
+    ],
+    "redirects": [
+      {
+        "source": "/home",
+        "destination": "/",
+        "permanent": true
+      }
+    ],
+    "cleanUrls": true,
+    "trailingSlash": false,
+    "routes": [
+      { "handle": "filesystem" },
+      { "src": "/(.*)", "dest": "/$1" },
+      { "src": "/.*", "status": 404, "dest": "/404.html" }
+    ]
+  }
+  
